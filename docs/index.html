@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <title>Exercise 3 of Tukhtaboy</title>
+</head>
+<body>
+<ol>
+    <li>
+        <h4>1. Write a script that gets the current month and prints one of the following responses, depending on whether
+            it's
+            August or not:
+            It's August, so it's still holiday.
+            Not August, This is Month-name so i don't have any holidays
+            You can use date(F) function to get the current month name
+        </h4>
+
+        <form name="form" action="" method="get">
+            <input type="date" name="data" id="data">
+        </form>
+        <button onclick="date()" type="submit">OK</button>
+    </li>
+    <hr>
+    <li>
+        <h4>2. Assign color red to a variable name $color and check to print one the following responses using if else
+            statement
+            The color is red.
+            The color is not red.
+
+        </h4>
+    <h1>
+        <?php
+
+        $color = 'red';
+        if ($color == 'red') {
+            echo '<span style="color:red; font-size: 50px;">The color is red.</span>';
+        } else {
+            echo '<span style="color:black;">The color is not red.</span>';
+        }
+
+        ?>
+        </li>
+
+    <hr>
+    <li>
+        <h4>3. Write a program to grade students based on their total score for a subject. The grading scheme is: Excellent
+            : >80 ;Great >70 & less than 80;Good >60 & less than 70; Pass >50 & less than 60 & Fail<.50; </h4>
+
+            <form action="" method="post">
+            <center>
+                <table border=0>
+                    <tr>
+                        <td>
+                            Student Name
+                        </td>
+                        <td>
+                            <input type=text name="t1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Grades for Web Programming 
+                        </td>
+                        <td>
+                            <input type=text name="t2">
+                        </td>
+                    </tr>
+                   
+                </table>
+                <br>
+                <br>
+                <input type=submit name="s" value="Result">
+            </center>
+            <?php
+if(isset($_POST['s']))////checking whether the input element is set or not
+{
+    $a=$_POST['t1']; //accessing value from 1st text box
+    $a1=$_POST['t2']; //accessing value from 2nd text field
+    $sum=$a1; //total grades
+    $avg=$sum/1;
+    if($avg>=0&&$avg<=50)
+        $grade="Fail";
+    if($avg>50&&$avg<=60)
+        $grade="Pass";
+    if($avg>60&&$avg<=70)
+        $grade="Good";
+    if($avg>70&&$avg<=80)
+        $grade="Great";
+    if($avg>80)
+        $grade="Excellent";
+    echo "<br>";
+    echo "<font size=4><center>Student is:-".$a."</center><br>"; 
+    echo "<font size=4><center>Total grades:-".$sum."</center><br>"; 
+    echo "<font size=4><center>Grade is:-".$grade."</center>"; 
+}
+            ?>
+    </li>
+    <hr>
+
+    <li>
+        <h4>4. Write a program to get inputs (age and name) from the user and based on their age, decide if he/she is
+            eligible for voting. (18 or more than 18 years is eligible for voting.)</h4>
+
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <input type="number" name="age" placeholder="Enter your age">
+        <input type="submit" value="SUBMIT">
+
+
+        <div id="result">
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // collect value of input field
+                $age = $_POST['age'];
+                if (empty($age)) {
+                    echo '<span style="color: red">You didn\'t enter your age!</span>';
+                } else {
+                    if ($age >= 18) {
+                        echo '<span style="color: green">You are old enough! You can vote!</span>';
+                    } else {
+                        echo '<span style="color: red">You are too young! You can\'t vote!</span>';
+                    }
+                }
+            }
+            ?>
+        </div>
+    </form>
+    </li>
+    <hr>
+
+    <li>
+        <h4> 5. Use a looping statement to construct the following pattern:
+            <br>
+            12345678 <br>
+            1234567 <br>
+            123456 <br>
+            12345 <br>
+            1234 <br>
+            123 <br>
+            12 <br>
+            1
+        </h4>
+        <h5>result:</h5>
+        <?php
+        for ($i = 8; $i >= 1; --$i) {
+            for ($j = 1; $j <= $i; ++$j) {
+                echo $j;
+            }
+            ?>
+            <br>
+            <?php
+        }
+        ?>
+    </li>
+    <hr>
+
+    <li>
+        <h4> 6. Use While loop to print the following pattern:
+            <br>
+            *<br>
+            **<br>
+            ***<br>
+            ****<br>
+            *****<br>
+            ******<br>
+            *******<br>
+            ********<br>
+
+        </h4>
+        <h5>result:</h5>
+        <?php
+        for ($i = 1; $i <= 8; ++$i) {
+            for ($j = 1; $j <= $i; ++$j) {
+            echo "*";
+            }
+            ?>
+            <br>
+            <?php
+        }
+        ?>
+    </li>
+    <hr>
+</ol>
+<script>
+    function date() {
+        a = document.getElementById("data").value;
+        document.cookie = 'data=' + a;
+
+        var b = a.split("-");
+        if (b[1] == "08" || b[1] == "8") {
+            alert(" It's August, so it's still holiday.")
+        } else {
+            alert("Not August, This is Month-name so i don't have any holidays");
+        }
+
+        // document.getElementById("demo").innerHTML = res;
+    }
+
+    function isRed() {
+        var color = document.getElementById("color").value;
+        alert(color);
+        var t = hex2rgba(color, false);
+        alert(t);
+    }
+
+    var obj =
+        {
+            'name': '',
+            'point': ''
+        };
+    var dataObj = [];
+
+    function addToList() {
+        var name = document.getElementById("name").value;
+        var point = document.getElementById("point").value;
+        obj = {"name": name, "point": point};
+        dataObj.push(obj);
+
+        f()
+    }
+
+    function f() {
+        var thtml = '<table style="border: solid 1px black; width: 200px;">';
+        thtml +=
+            '<tr style="border: solid 1px black;">' +
+            '<td style="border: solid 1px black;">' + 'name' + '</td>' +
+            '<td style="border: solid 1px black;">' + 'total point' + '</td>' +
+            '<td style="border: solid 1px black;">' + 'status' + '</td>' +
+            '</tr>';
+        for (var i = 0; i < dataObj.length; i++) {
+
+            if (dataObj[i].point > 80) {
+                thtml +=
+                    '<tr style="border: solid 1px black;">' +
+                    '<td style="border: solid 1px black;">' + dataObj[i].name + '</td>' +
+                    '<td style="border: solid 1px black;" id="points">' + dataObj[i].point + '</td>' +
+                    '<td style="border: solid 1px black; background: greenyellow" id="status">' + 'Excellent' + '</td>' +
+                    '</tr>';
+            } else if (dataObj[i].point > 70 && dataObj[i].point < 80) {
+                thtml +=
+                    '<tr style="border: solid 1px black;">' +
+                    '<td style="border: solid 1px black;">' + dataObj[i].name + '</td>' +
+                    '<td style="border: solid 1px black;" id="points">' + dataObj[i].point + '</td>' +
+                    '<td style="border: solid 1px black; background: green" id="status">' + 'Great' + '</td>' +
+                    '</tr>';
+            } else if (dataObj[i].point > 60 && dataObj[i].point < 70) {
+                thtml +=
+                    '<tr style="border: solid 1px black;">' +
+                    '<td style="border: solid 1px black;">' + dataObj[i].name + '</td>' +
+                    '<td style="border: solid 1px black;" id="points">' + dataObj[i].point + '</td>' +
+                    '<td style="border: solid 1px black; background: yellow" id="status">' + 'Good' + '</td>' +
+                    '</tr>';
+            } else if (dataObj[i].point > 50 && dataObj[i].point < 60) {
+                thtml +=
+                    '<tr style="border: solid 1px black;">' +
+                    '<td style="border: solid 1px black;">' + dataObj[i].name + '</td>' +
+                    '<td style="border: solid 1px black;" id="points">' + dataObj[i].point + '</td>' +
+                    '<td style="border: solid 1px black; background: orange" id="status">' + 'Pass ' + '</td>' +
+                    '</tr>';
+            } else {
+                thtml +=
+                    '<tr style="border: solid 1px black;">' +
+                    '<td style="border: solid 1px black;">' + dataObj[i].name + '</td>' +
+                    '<td style="border: solid 1px black;" id="points">' + dataObj[i].point + '</td>' +
+                    '<td style="border: solid 1px black; background: red" id="status">' + 'Fail ' + '</td>' +
+                    '</tr>';
+            }
+        }
+        document.getElementById("menu").innerHTML = thtml;
+
+        // if(document.getElementById("point").value > 80){
+        //     document.getElementById("status").innerText = "Excellent";
+        // }
+        // alert(document.getElementById("points").value);
+    }
+</script>
+</body>
+</html>
